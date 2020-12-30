@@ -14,18 +14,16 @@ class ColorAnalysisTest {
 
     private static Stream<Arguments> provideAlphabet() {
         return Stream.of(
-                Arguments.of("А", new HashMap<Letter, Double>(){{put(Letter.А, 42.105);}}),
-                Arguments.of("ЗапАл", new HashMap<Letter, Double>(){{put(Letter.А, 6.316);}}),
-                Arguments.of("ПрорЫв", new HashMap<Letter, Double>(){{put(Letter.О, 1.603); put(Letter.Ы, 20.833);}}),
-                Arguments.of("ПрорЫв гОда", new HashMap<Letter, Double>(){{put(Letter.О, 2.885); put(Letter.Ы, 12.5); put(Letter.А, 1.053);}}),
+                Arguments.of("А", new HashMap<Letter, Double>(){{put(Letter.RED, 34.188);}}),
+                Arguments.of("ЗапАл", new HashMap<Letter, Double>(){{put(Letter.RED, 5.128);}}),
+                Arguments.of("ПрорЫв", new HashMap<Letter, Double>(){{put(Letter.YELLOW, 1.529); put(Letter.BROWN, 18.519);}}),
+                Arguments.of("ПрорЫв гОда", new HashMap<Letter, Double>(){{put(Letter.YELLOW, 2.752); put(Letter.BROWN, 11.111); put(Letter.RED, 0.855);}}),
                 Arguments.of("ЗанимАлся организАцией рабОты комАнды разрабОтчиков", new HashMap<Letter, Double>(){{
-                    put(Letter.О, 2.046);
-                    put(Letter.Ы, 2.66);
-                    put(Letter.А, 2.464);
-                    put(Letter.И, 2.076);
-                    put(Letter.Я, 0.887);
-                    put(Letter.Й, 1.418);
-                    put(Letter.Е, 0.426);
+                    put(Letter.YELLOW, 1.952);
+                    put(Letter.BROWN, 2.364);
+                    put(Letter.RED, 2.182);
+                    put(Letter.BLUE, 1.52);
+                    put(Letter.GREEN, 0.25);
                 }})
         );
     }

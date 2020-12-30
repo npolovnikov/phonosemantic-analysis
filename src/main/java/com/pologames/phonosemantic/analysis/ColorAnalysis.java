@@ -20,9 +20,9 @@ public class ColorAnalysis {
                     counter.incrementAndGet();
                     if (Letter.hasChar(letter)) {
                         Letter letter1 = Letter.getLetter(letter);
-                        if (i == 0) {
+                        /*if (i == 0) {
                             repeat.merge(letter1, 4, Integer::sum);
-                        } else if (!Character.isLowerCase(letter)) {
+                        } else*/ if (!Character.isLowerCase(letter)) {
                             repeat.merge(letter1, 2, Integer::sum);
                         } else {
                             repeat.merge(letter1, 1, Integer::sum);
@@ -35,7 +35,7 @@ public class ColorAnalysis {
         return repeat.entrySet()
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey,
-                        e -> round(e.getValue() / (double) counter.get() / e.getKey().getChastost(), 3) ));
+                        e -> round(e.getValue() / (double) counter.get() / e.getKey().getFrequency(), 3) ));
     }
 
     private static double round(double value, int scale) {

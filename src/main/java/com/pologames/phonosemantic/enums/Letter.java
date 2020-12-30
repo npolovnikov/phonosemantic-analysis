@@ -6,46 +6,42 @@ import java.util.stream.Stream;
  * Created by npolovnikov on 26.04.17.
  */
 public enum Letter {
-    А("Густо-красный", 'а', 0.049 + 0.046),
-    Я("Ярко-красный", 'я', 0.013 + 0.011),
-    О("Светло-желтый, белый", 'о', 0.067 + 0.037),
-    Е("Зеленый", 'е', 0.050),
-    Ё("Желто-зеленый", 'ё', 0.039),
-    И("Синий", 'и', 0.041),
-    Й("Синеватый", 'й', 0.015),
-    У("Темно-синий, темно-сине-зеленый, темно-лиловый", 'у', 0.017+0.012),
-    Ю("Голубоватый", 'ю', 0.004+0.002),
-    Ы("Темно-коричневый, черный", 'ы', 0.010 + 0.006);
+    GREEN("Зеленый", "эе", 0.085),
+    YELLOW("Желтый", "оё", 0.109),
+    BROWN("Темно-коричневый", "ы", 0.018),
+    LIGHT_BLUE("Голубой", "ую", 0.035),
+    BLUE("Синий", "и", 0.056),
+    RED("Красный", "ая", 0.117);
 
     private String color;
-    private char word;
-    private double chastost;
-    Letter(String color, char word, double chastost){
+    private String word;
+    private double frequency;
+    Letter(String color, String word, double frequency){
         this.color = color;
         this.word = word;
-        this.chastost = chastost;
+        this.frequency = frequency;
     }
 
     public String getColor() {
         return color;
     }
 
-    public char getWord() {
+    public String getWord() {
         return word;
     }
 
-    public double getChastost() {
-        return chastost;
+    public double getFrequency() {
+        return frequency;
     }
 
     public static boolean hasChar(int c) {
         return Stream.of(values())
-                .anyMatch(v -> Character.toLowerCase(c) == v.getWord());
+                .anyMatch(v -> v.getWord().indexOf(Character.toLowerCase(c)) >= 0);
     }
 
     public static Letter getLetter(int c) {
         return Stream.of(values())
-                .filter(v -> Character.toLowerCase(c) == v.getWord())
+                .filter(v -> v.getWord().indexOf(Character.toLowerCase(c)) >= 0)
                 .findAny().orElseThrow(RuntimeException::new);
     }
 }
